@@ -480,3 +480,24 @@ button.theme-button.choto {
 .installation-section {
     min-height: calc(100vh - 119px);
 }
+
+.alert.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 18px;
+}
+
+.alert.alert-success a {
+    color: #0c7439;
+    font-weight: bold;
+}
+
+.alert.alert-success::before {
+    content: "\2714";
+    font-size: 24px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
