@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>License Verification Portal</title>
+    <meta name="author" content="Viser Store">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://viserstore.github.io/install/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://viser.store/assets/images/logoIcon/favicon.png" type="image/x-icon">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="section-bg py-2 text-center">
+        <div class="container">
+            <h3 class="title">License Verification Portal</h3>
+        </div>
+    </header>
+    
+    <!-- Main Content Section -->
+    <div class="installation-section padding-bottom padding-top">
+        <div class="container">
+            <div class="installation-wrapper">
+                <div class="install-content-area">
+                    <div class="install-item">
+                        <h3 class="title text-center">License Information</h3>
+                        <div class="box-item">
+                            <form action="" method="post" class="information-form-area mb--20">
+                                @csrf
+                                <div class="info-item">
+                                    <h5 class="font-weight-normal mb-2">Purchase Code</h5>
+                                    <div class="row">
+                                        <div class="information-form-group col-sm-9">
+                                            <input type="text" name="code" placeholder="Purchase Code" required>
+                                        </div>
+                                        <div class="information-form-group col-sm-3">
+                                            <button type="submit" class="theme-button choto w-100">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="item table-area mt-5">
+                                @if ($notify)
+                                    @foreach ($notify as $msg)
+                                        <table class="requirment-table">
+                                            <h3 class='@if ($msg[0] === 'success') text-success @else text-danger @endif text-center'>
+                                                {{ __($msg[1]) }}
+                                            </h3>
+                                        </table>
+                                    @endforeach
+                                @endif
+                                @unless ($notify)
+                                    @if ($activate == 1)
+                                        <div class="alert alert-success">
+                                            Your system is already activated.
+                                        </div>
+                                    @endif
+                                @endunless
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer Section -->
+    <footer class="section-bg py-3 text-center">
+        <div class="container">
+            <p class="m-0 font-weight-bold">&copy;{{ date('Y') }} - All Rights Reserved by <a href="https://viser.store/">Viser Store</a></p>
+        </div>
+    </footer>
+</body>
+</html>
